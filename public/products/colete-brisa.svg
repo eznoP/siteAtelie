@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c8b29e"/><stop offset="1" stop-color="#786456"/></linearGradient>
+    <linearGradient id="vest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1dfc1"/><stop offset="1" stop-color="#c5aa7e"/></linearGradient>
+    <pattern id="openwork" width="38" height="42" patternUnits="userSpaceOnUse"><path d="M2 21 Q10 3 19 21 Q28 39 36 21 M19 0 V42" fill="none" stroke="#8f7656" stroke-width="5" opacity=".6"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="30" stdDeviation="25" flood-color="#362b25" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)"/>
+  <circle cx="116" cy="220" r="240" fill="#efe0ce" opacity=".22"/>
+  <path d="M0 1020 Q280 884 480 1012 T960 990 V1200 H0Z" fill="#57473f" opacity=".42"/>
+  <g filter="url(#shadow)">
+    <path d="M311 260 Q390 190 480 236 Q570 190 649 260 L801 493 L689 625 L651 1000 L504 1028 L480 480 L456 1028 L309 1000 L271 625 L159 493Z" fill="url(#vest)"/>
+    <path d="M311 260 Q390 190 480 236 Q570 190 649 260 L801 493 L689 625 L651 1000 L504 1028 L480 480 L456 1028 L309 1000 L271 625 L159 493Z" fill="url(#openwork)"/>
+    <path d="M319 265 Q378 356 480 468 Q582 356 641 265" fill="none" stroke="#8c704d" stroke-width="28" stroke-linecap="round"/>
+    <path d="M467 478 L467 1018 M493 478 L493 1018" stroke="#9b7d57" stroke-width="12"/>
+    <path d="M277 608 L164 486 M683 608 L796 486" stroke="#9b7d57" stroke-width="23" stroke-linecap="round"/>
+    <circle cx="520" cy="626" r="11" fill="#795e42"/><circle cx="520" cy="724" r="11" fill="#795e42"/><circle cx="520" cy="822" r="11" fill="#795e42"/>
+  </g>
+</svg>

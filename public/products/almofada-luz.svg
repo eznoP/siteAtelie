@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dca961"/><stop offset="1" stop-color="#6c3542"/></linearGradient>
+    <radialGradient id="pillow"><stop stop-color="#e8bd62"/><stop offset="1" stop-color="#b7792e"/></radialGradient>
+    <pattern id="stitch" width="34" height="28" patternUnits="userSpaceOnUse"><path d="M0 14 Q8 2 17 14 T34 14" fill="none" stroke="#ffe7a8" stroke-width="5" opacity=".48"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="35" stdDeviation="30" flood-color="#4c1f2d" flood-opacity=".46"/></filter>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)"/>
+  <circle cx="790" cy="198" r="230" fill="#f4d39a" opacity=".2"/>
+  <path d="M0 935 Q282 820 506 942 T960 912 V1200 H0Z" fill="#582b37" opacity=".48"/>
+  <g filter="url(#shadow)">
+    <path d="M178 314 Q480 246 782 314 Q845 600 782 887 Q480 954 178 887 Q115 600 178 314Z" fill="url(#pillow)"/>
+    <path d="M178 314 Q480 246 782 314 Q845 600 782 887 Q480 954 178 887 Q115 600 178 314Z" fill="url(#stitch)"/>
+    <circle cx="480" cy="600" r="188" fill="none" stroke="#ffe09a" stroke-width="18" opacity=".75"/>
+    <path d="M480 386 V468 M480 732 V814 M266 600 H348 M612 600 H694 M329 449 L387 507 M573 693 L631 751 M631 449 L573 507 M387 693 L329 751" stroke="#fff0b7" stroke-width="24" stroke-linecap="round"/>
+    <circle cx="480" cy="600" r="76" fill="#8d4d35"/><circle cx="480" cy="600" r="42" fill="#f3d27e"/>
+    <path d="M190 328 Q480 270 770 328 M190 873 Q480 930 770 873" fill="none" stroke="#8b542a" stroke-width="12" opacity=".58"/>
+  </g>
+</svg>

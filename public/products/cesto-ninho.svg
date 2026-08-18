@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e4bd9a"/><stop offset="1" stop-color="#8b4e3e"/></linearGradient>
+    <linearGradient id="basket" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db8964"/><stop offset="1" stop-color="#974d3c"/></linearGradient>
+    <pattern id="weave" width="50" height="36" patternUnits="userSpaceOnUse"><path d="M0 18 Q12 3 25 18 T50 18" fill="none" stroke="#f4b58d" stroke-width="8" stroke-linecap="round"/><path d="M0 34 Q12 19 25 34 T50 34" fill="none" stroke="#7b3d34" stroke-opacity=".45" stroke-width="5"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-color="#4b251f" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)"/>
+  <rect y="875" width="960" height="325" fill="#754235" opacity=".36"/>
+  <path d="M65 186 Q286 116 472 238 T900 192" fill="none" stroke="#f7dcc2" stroke-width="11" opacity=".42"/>
+  <circle cx="812" cy="252" r="180" fill="#fff1da" opacity=".18"/>
+  <g filter="url(#shadow)">
+    <path d="M278 491 C284 282 676 282 682 491" fill="none" stroke="#8d4538" stroke-width="54" stroke-linecap="round"/>
+    <path d="M298 486 C312 337 648 337 663 486" fill="none" stroke="#dfa17d" stroke-width="15" opacity=".65"/>
+    <path d="M144 506 Q480 420 816 506 L744 955 Q480 1064 216 955Z" fill="url(#basket)"/>
+    <path d="M144 506 Q480 420 816 506 L744 955 Q480 1064 216 955Z" fill="url(#weave)"/>
+    <path d="M151 518 Q480 437 809 518" fill="none" stroke="#71372f" stroke-width="30"/>
+    <path d="M174 603 Q480 526 786 603 M189 716 Q480 648 771 716 M205 830 Q480 780 755 830" fill="none" stroke="#6e352d" stroke-width="10" opacity=".5"/>
+  </g>
+</svg>

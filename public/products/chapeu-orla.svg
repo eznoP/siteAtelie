@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8aa5ba"/><stop offset="1" stop-color="#29475f"/></linearGradient>
+    <linearGradient id="hat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5f82a2"/><stop offset="1" stop-color="#274d70"/></linearGradient>
+    <pattern id="stitch" width="32" height="26" patternUnits="userSpaceOnUse"><path d="M0 13 Q8 2 16 13 T32 13" fill="none" stroke="#b9d3df" stroke-width="5" opacity=".62"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="34" stdDeviation="26" flood-color="#102b40" flood-opacity=".48"/></filter>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)"/>
+  <circle cx="170" cy="192" r="210" fill="#c7d8df" opacity=".2"/>
+  <path d="M0 917 Q214 831 454 932 T960 897 V1200 H0Z" fill="#19394f" opacity=".45"/>
+  <g filter="url(#shadow)">
+    <path d="M325 292 Q480 199 635 292 L696 650 Q480 727 264 650Z" fill="url(#hat)"/>
+    <path d="M325 292 Q480 199 635 292 L696 650 Q480 727 264 650Z" fill="url(#stitch)"/>
+    <path d="M264 596 Q480 663 696 596" fill="none" stroke="#c04c72" stroke-width="50"/>
+    <path d="M115 694 Q480 571 845 694 Q762 940 480 974 Q198 940 115 694Z" fill="url(#hat)"/>
+    <path d="M115 694 Q480 571 845 694 Q762 940 480 974 Q198 940 115 694Z" fill="url(#stitch)"/>
+    <path d="M146 711 Q480 618 814 711" fill="none" stroke="#7ba0b8" stroke-width="18" opacity=".72"/>
+    <path d="M193 819 Q480 741 767 819" fill="none" stroke="#1f4767" stroke-width="13" opacity=".68"/>
+  </g>
+</svg>

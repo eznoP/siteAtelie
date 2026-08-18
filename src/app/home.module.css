@@ -1,0 +1,11 @@
+.site {
+  position: relative;
+  isolation: isolate;
+  min-height: 100%;
+  overflow: clip;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
