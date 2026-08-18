@@ -6,18 +6,22 @@ export function ProductImage({
   product,
   sizes,
   priority = false,
+  src,
+  alt,
 }: {
   product: Product;
   sizes: string;
   priority?: boolean;
+  src?: string;
+  alt?: string;
 }) {
-  const src = getProductImage(product);
-  const unoptimized = src.endsWith(".svg") || src.startsWith("data:");
+  const imageSrc = src || getProductImage(product);
+  const unoptimized = imageSrc.endsWith(".svg") || imageSrc.startsWith("data:");
 
   return (
     <Image
-      src={src}
-      alt={`${product.name}, peça artesanal em crochê`}
+      src={imageSrc}
+      alt={alt || `${product.name}, peça artesanal em crochê`}
       fill
       sizes={sizes}
       priority={priority}
