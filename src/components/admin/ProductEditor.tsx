@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useProducts } from "@/components/providers/ProductProvider";
 import { slugify } from "@/lib/products/format";
 import { getLegacyOptions, getProductProperties, normalizeProperties } from "@/lib/products/properties";
@@ -8,6 +9,7 @@ import type { Product, ProductDraft, ProductProperty } from "@/types/product";
 import { ImageUploader } from "./ImageUploader";
 import { PropertyEditor } from "./PropertyEditor";
 import styles from "./admin.module.css";
+import fixStyles from "./admin-v06.module.css";
 
 function initialProperties(product: Product | null): ProductProperty[] {
   if (product) return getProductProperties(product);
@@ -30,11 +32,28 @@ export function ProductEditor({
   const [images, setImages] = useState(product?.images ?? []);
   const [properties, setProperties] = useState<ProductProperty[]>(() => initialProperties(product));
   const [message, setMessage] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape" && !busy) onClose();
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [busy, onClose]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!images.length) {
-      setMessage("Adicione uma imagem antes de salvar.");
+      setMessage("Adicione ao menos uma foto antes de salvar.");
       return;
     }
 
@@ -69,20 +88,29 @@ export function ProductEditor({
     }
   }
 
-  return (
-    <div className={styles.editorBackdrop} role="presentation" onMouseDown={onClose}>
-      <dialog
-        className={styles.editor}
-        open
+  if (!mounted) return null;
+
+  return createPortal(
+    <div
+      className={`${styles.editorBackdrop} ${fixStyles.editorBackdrop}`}
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget && !busy) onClose();
+      }}
+    >
+      <section
+        className={`${styles.editor} ${fixStyles.editor}`}
+        role="dialog"
+        aria-modal="true"
         aria-labelledby="editor-title"
         onMouseDown={(event) => event.stopPropagation()}
       >
         <header>
           <div>
-            <p>{product ? "Editar cadastro" : "Nova peça"}</p>
+            <p>{product ? "Editar cadastro" : "Adicionar peça"}</p>
             <h2 id="editor-title">{product?.name || "Adicionar ao acervo"}</h2>
           </div>
-          <button type="button" onClick={onClose} aria-label="Fechar editor">×</button>
+          <button type="button" disabled={busy} onClick={onClose} aria-label="Fechar editor">×</button>
         </header>
 
         <form onSubmit={handleSubmit}>
@@ -133,11 +161,12 @@ export function ProductEditor({
 
           <p className={styles.editorMessage} role="alert">{message}</p>
           <footer>
-            <button type="button" onClick={onClose}>Cancelar</button>
+            <button type="button" disabled={busy} onClick={onClose}>Cancelar</button>
             <button type="submit" disabled={busy}>{busy ? "Salvando..." : "Salvar peça"}</button>
           </footer>
         </form>
-      </dialog>
-    </div>
+      </section>
+    </div>,
+    document.body,
   );
 }
