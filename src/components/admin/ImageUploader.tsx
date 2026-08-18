@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useProducts } from "@/components/providers/ProductProvider";
 import { prepareProductImage } from "@/lib/images/client";
 import styles from "./admin.module.css";
+import fixStyles from "./admin-v06.module.css";
+
+const MAX_IMAGES = 8;
+const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/avif";
 
 export function ImageUploader({
   images,
@@ -16,29 +20,39 @@ export function ImageUploader({
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState("");
 
-  async function handleFile(file: File | undefined) {
-    if (!file) return;
+  async function uploadFile(file: File): Promise<string> {
+    const prepared = await prepareProductImage(file);
+    if (mode === "demo") return prepared.preview;
+
+    const body = new FormData();
+    body.append("file", new File([prepared.blob], "produto.webp", { type: "image/webp" }));
+    const response = await fetch("/api/upload", { method: "POST", body });
+    const payload = (await response.json()) as { image?: string; error?: string };
+    if (!response.ok || !payload.image) {
+      throw new Error(payload.error || "Não foi possível enviar a imagem.");
+    }
+    return payload.image;
+  }
+
+  async function handleFiles(fileList: FileList | null) {
+    if (!fileList?.length) return;
+    const remaining = MAX_IMAGES - images.length;
+    if (remaining <= 0) {
+      setMessage(`O limite é de ${MAX_IMAGES} fotos por peça.`);
+      return;
+    }
+
+    const files = Array.from(fileList).slice(0, remaining);
     setUploading(true);
     setMessage("");
 
     try {
-      const prepared = await prepareProductImage(file);
-
-      if (mode === "demo") {
-        onChange([prepared.preview]);
-        setMessage("Imagem convertida para WebP e salva neste navegador.");
-        return;
-      }
-
-      const body = new FormData();
-      body.append("file", new File([prepared.blob], "produto.webp", { type: "image/webp" }));
-      const response = await fetch("/api/upload", { method: "POST", body });
-      const payload = (await response.json()) as { image?: string; error?: string };
-      if (!response.ok || !payload.image) {
-        throw new Error(payload.error || "Não foi possível enviar a imagem.");
-      }
-      onChange([payload.image]);
-      setMessage("Imagem otimizada e enviada.");
+      const uploaded: string[] = [];
+      for (const file of files) uploaded.push(await uploadFile(file));
+      onChange([...images, ...uploaded]);
+      setMessage(
+        `${uploaded.length} ${uploaded.length === 1 ? "foto adicionada" : "fotos adicionadas"}. A primeira foto é a principal.`,
+      );
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Falha no upload.");
     } finally {
@@ -46,41 +60,69 @@ export function ImageUploader({
     }
   }
 
+  function removeImage(index: number) {
+    onChange(images.filter((_, imageIndex) => imageIndex !== index));
+  }
+
+  function makePrimary(index: number) {
+    if (index === 0) return;
+    const next = [...images];
+    const [selected] = next.splice(index, 1);
+    next.unshift(selected);
+    onChange(next);
+    setMessage("Imagem principal atualizada.");
+  }
+
   return (
     <section className={styles.imageUploader} aria-labelledby="image-heading">
-      <div>
-        <p id="image-heading">Imagem principal</p>
-        <small>Corte automático 4:5 · 1200 × 1500 · WebP</small>
-      </div>
-      {images[0] ? (
-        <div className={styles.imagePreview} style={{ backgroundImage: `url("${images[0]}")` }}>
-          <button type="button" onClick={() => onChange([])}>Remover</button>
+      <div className={fixStyles.imageUploaderHeading}>
+        <div>
+          <p id="image-heading">Fotos da peça</p>
+          <small>Corte automático 4:5 · 1200 × 1500 · WebP · até {MAX_IMAGES} fotos</small>
         </div>
-      ) : (
+        <span>{images.length}/{MAX_IMAGES}</span>
+      </div>
+
+      {images.length ? (
+        <div className={fixStyles.imageGalleryEditor}>
+          {images.map((image, index) => (
+            <article className={fixStyles.imageThumbEditor} key={`${image}-${index}`}>
+              <div style={{ backgroundImage: `url("${image}")` }} aria-label={`Foto ${index + 1} da peça`} />
+              {index === 0 ? <strong>Principal</strong> : null}
+              <div className={fixStyles.imageThumbActions}>
+                {index > 0 ? (
+                  <button type="button" disabled={uploading} onClick={() => makePrimary(index)}>
+                    Tornar principal
+                  </button>
+                ) : null}
+                <button type="button" disabled={uploading} onClick={() => removeImage(index)}>
+                  Remover
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : null}
+
+      {images.length < MAX_IMAGES ? (
         <label className={styles.uploadDropzone}>
           <input
             type="file"
-            accept="image/jpeg,image/png,image/webp,image/avif"
+            accept={ACCEPTED_TYPES}
+            multiple
             disabled={uploading}
-            onChange={(event) => void handleFile(event.target.files?.[0])}
+            onChange={(event) => {
+              void handleFiles(event.target.files);
+              event.currentTarget.value = "";
+            }}
           />
           <span aria-hidden="true">↥</span>
-          <strong>{uploading ? "Preparando imagem..." : "Escolher fotografia"}</strong>
-          <small>JPG, PNG, WebP ou AVIF · até 10 MB</small>
-        </label>
-      )}
-      {images[0] ? (
-        <label className={styles.replaceImage}>
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/avif"
-            disabled={uploading}
-            onChange={(event) => void handleFile(event.target.files?.[0])}
-          />
-          {uploading ? "Substituindo..." : "Substituir fotografia"}
+          <strong>{uploading ? "Preparando fotos..." : images.length ? "Adicionar mais fotos" : "Adicionar fotos"}</strong>
+          <small>Você pode selecionar várias imagens de uma vez · até 10 MB cada</small>
         </label>
       ) : null}
-      <p className={styles.uploadMessage} role="status">{message}</p>
+
+      <p className={styles.uploadMessage} role="status" aria-live="polite">{message}</p>
     </section>
   );
 }
