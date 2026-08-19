@@ -19,7 +19,7 @@ export function StockManager({ product }: { product: Product }) {
     <div className={styles.stockControl} data-status={getStockStatus(product)} aria-label={`Estoque de ${product.name}`}>
       <button type="button" disabled={busy || product.stock === 0} onClick={() => void changeStock(-1)} aria-label="Diminuir estoque">−</button>
       <output>{product.stock}</output>
-      <button type="button" disabled={busy} onClick={() => void changeStock(1)} aria-label="Aumentar estoque">＋</button>
+      <button type="button" disabled={busy} onClick={() => void changeStock(1)} aria-label="Aumentar estoque">+</button>
     </div>
   );
 }
