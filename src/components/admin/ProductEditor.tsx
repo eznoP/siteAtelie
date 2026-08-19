@@ -142,7 +142,7 @@ export function ProductEditor({
             </label>
             <label className={styles.fullField}>
               Descrição exibida no pop-up
-              <textarea name="description" rows={4} minLength={10} maxLength={1200} defaultValue={product?.description} required />
+              <textarea name="description" rows={4} maxLength={1200} defaultValue={product?.description} required />
             </label>
           </div>
 
