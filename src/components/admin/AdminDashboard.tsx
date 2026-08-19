@@ -91,7 +91,7 @@ export function AdminDashboard({
           </div>
           {activeView === "products" ? (
             <button type="button" onClick={() => setEditingProduct(null)}>
-              <span aria-hidden="true">+</span> Adicionar peça
+              + Adicionar peça
             </button>
           ) : null}
         </header>
