@@ -18,8 +18,8 @@ export function Catalog({ products }: { products: Product[] }) {
       {visibleProducts.length ? (
         <ProductGrid products={visibleProducts} />
       ) : (
-        <div className={styles.emptyCatalog}>
-          <h3>Catálogo em atualização</h3>
+        <div className={styles.emptyCatalog} role="status">
+          <h3>Prévia em breve...</h3>
         </div>
       )}
     </section>

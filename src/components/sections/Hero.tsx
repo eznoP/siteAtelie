@@ -12,8 +12,8 @@ export function Hero() {
           <em>um fio.</em>
         </h1>
         <p className={styles.heroText}>
-          E um pouco de tempo. Criamos peças para vestir, morar e guardar,
-          respeitando o ritmo de cada ponto.
+          E um pouco de tempo. A Belloca cria peças de crochê feitas à mão,
+          respeitando o ritmo e a personalidade de cada ponto.
         </p>
         <div className={styles.heroActions}>
           <Link className={styles.primaryButton} href="#catalogo">
@@ -27,18 +27,21 @@ export function Hero() {
       </div>
 
       <figure className={styles.heroFigure}>
-        <div className={styles.heroImageWrap}>
+        <div
+          className={styles.heroImageWrap}
+          style={{ aspectRatio: "5 / 2", background: "#fff", border: "1px solid #ddd" }}
+        >
           <Image
-            src="/products/bolsa-aurora.svg"
-            alt="Ilustração da Bolsa Aurora em crochê rosa"
+            src="/brand/belloca-logo.webp"
+            alt="Logo Belloca Handmade"
             fill
             priority
-            sizes="(max-width: 760px) 70vw, 31vw"
-            unoptimized
+            sizes="(max-width: 760px) 80vw, 32vw"
+            style={{ objectFit: "contain" }}
           />
         </div>
         <figcaption>
-          <strong>Bolsa Aurora</strong>
+          <strong>Belloca Handmade</strong>
         </figcaption>
       </figure>
     </section>

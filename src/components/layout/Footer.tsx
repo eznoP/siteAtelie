@@ -5,8 +5,8 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerBrand}>
-        <strong>AVESSO</strong>
-        <small>ATELIÊ</small>
+        <strong>BELLOCA</strong>
+        <small>HANDMADE</small>
       </div>
       <nav aria-label="Navegação do rodapé">
         <Link href="/#catalogo">Catálogo</Link>

@@ -15,24 +15,26 @@ export function About() {
 
       <div className={styles.aboutStory}>
         <p className={styles.aboutLead}>
-          O Avesso nasceu da vontade de devolver presença aos objetos que nos
-          cercam.
+          A Belloca nasceu da vontade de transformar fios em peças com presença,
+          cuidado e personalidade.
         </p>
         <p>
-          Trabalhamos em pequena escala, com fibras escolhidas pelo toque e
-          acabamentos que deixam as mãos aparecerem. Nenhuma peça sai idêntica
-          à outra, e é exatamente essa a graça.
+          Trabalhamos em pequena escala, com materiais escolhidos pelo toque e
+          acabamentos que valorizam o feito à mão. Cada peça pode carregar pequenas
+          diferenças — e é justamente isso que torna o artesanal único.
         </p>
       </div>
 
-      <figure className={styles.aboutFigure}>
-        <div>
+      <figure className={styles.aboutFigure} aria-label="Belloca Handmade">
+        <div
+          style={{ aspectRatio: "5 / 2", background: "#fff", border: "1px solid #ddd" }}
+        >
           <Image
-            src="/products/coelho-bento.svg"
-            alt="Coelho Bento, amigurumi feito à mão"
+            src="/brand/belloca-logo.webp"
+            alt="Logo Belloca Handmade"
             fill
             sizes="(max-width: 760px) 72vw, 29vw"
-            unoptimized
+            style={{ objectFit: "contain" }}
           />
         </div>
       </figure>

@@ -35,9 +35,9 @@ export function AdminDashboard({
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
         <Link className={styles.adminBrand} href="/">
-          <span>A</span>
+          <span>B</span>
           <div>
-            <strong>AVESSO</strong>
+            <strong>BELLOCA</strong>
             <small>painel do ateliê</small>
           </div>
         </Link>

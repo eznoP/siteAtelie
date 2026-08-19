@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -22,9 +23,26 @@ export function Header() {
           <Link href="/#catalogo">Ver peças</Link>
         </div>
 
-        <Link href="/" className={styles.brand} aria-label="Ateliê Avesso, início">
-          <strong>AVESSO</strong>
-          <small>ATELIÊ</small>
+        <Link
+          href="/"
+          className={styles.brand}
+          aria-label="Belloca Handmade, início"
+          style={{
+            width: "clamp(10.5rem, 17vw, 14.5rem)",
+            padding: "0.28rem 0.6rem",
+            background: "#fff",
+            borderRadius: "0.35rem",
+            boxShadow: "0 8px 24px rgba(0,0,0,.16)",
+          }}
+        >
+          <Image
+            src="/brand/belloca-logo.webp"
+            alt=""
+            width={1000}
+            height={400}
+            priority
+            style={{ display: "block", width: "100%", height: "auto" }}
+          />
         </Link>
 
         <div className={`${styles.headerUtility} ${styles.headerUtilityRight}`}>

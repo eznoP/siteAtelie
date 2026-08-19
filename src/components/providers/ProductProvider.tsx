@@ -10,7 +10,7 @@ import {
 import { normalizePositions, orderProducts } from "@/lib/products/catalog";
 import type { CatalogMode, Product, ProductDraft } from "@/types/product";
 
-const STORAGE_KEY = "atelie-avesso.products.v1";
+const STORAGE_KEY = "belloca.products.v1";
 
 interface ProductContextValue {
   products: Product[];

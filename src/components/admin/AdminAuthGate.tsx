@@ -10,7 +10,7 @@ import styles from "./admin.module.css";
 
 const DEMO_ACCESS = "enzo";
 const DEMO_PASSWORD = "1111";
-const DEMO_SESSION_KEY = "atelie-avesso.admin-demo-session";
+const DEMO_SESSION_KEY = "belloca.admin-demo-session";
 
 export function AdminAuthGate() {
   const { mode, refresh } = useProducts();
@@ -148,8 +148,8 @@ export function AdminAuthGate() {
     return (
       <div className={styles.authScreen}>
         <Link className={styles.authBrand} href="/">
-          <span>A</span>
-          <strong>AVESSO</strong>
+          <span>B</span>
+          <strong>BELLOCA</strong>
         </Link>
         <form className={styles.loginCard} onSubmit={handleLogin}>
           <p>Painel reservado</p>
