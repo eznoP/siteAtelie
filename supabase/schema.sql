@@ -10,7 +10,7 @@ create table if not exists public.products (
   id uuid primary key default gen_random_uuid(),
   name text not null check (char_length(name) between 2 and 100),
   slug text not null unique check (char_length(slug) between 2 and 120),
-  description text not null check (char_length(description) between 10 and 1200),
+  description text not null check (char_length(description) <= 1200),
   images text[] not null default '{}',
   category text not null,
   price numeric(12, 2) not null check (price >= 0),
