@@ -27,19 +27,13 @@ export function Header() {
           href="/"
           className={styles.brand}
           aria-label="Belloca Handmade, início"
-          style={{
-            width: "clamp(10.5rem, 17vw, 14.5rem)",
-            padding: "0.28rem 0.6rem",
-            background: "#fff",
-            borderRadius: "0.35rem",
-            boxShadow: "0 8px 24px rgba(0,0,0,.16)",
-          }}
+          style={{ width: "clamp(11rem, 19vw, 16rem)" }}
         >
           <Image
-            src="/brand/belloca-logo.webp"
-            alt=""
-            width={1000}
-            height={400}
+            src="/brand/belloca-wordmark.svg"
+            alt="Belloca Handmade"
+            width={520}
+            height={180}
             priority
             style={{ display: "block", width: "100%", height: "auto" }}
           />

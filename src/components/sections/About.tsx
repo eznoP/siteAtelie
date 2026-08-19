@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { PreviewCard } from "./PreviewCard";
 import styles from "./sections.module.css";
 
 export function About() {
@@ -25,19 +25,14 @@ export function About() {
         </p>
       </div>
 
-      <figure className={styles.aboutFigure} aria-label="Belloca Handmade">
-        <div
-          style={{ aspectRatio: "5 / 2", background: "#fff", border: "1px solid #ddd" }}
-        >
-          <Image
-            src="/brand/belloca-logo.webp"
-            alt="Logo Belloca Handmade"
-            fill
-            sizes="(max-width: 760px) 72vw, 29vw"
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-      </figure>
+      <div className={styles.aboutFigure}>
+        <PreviewCard
+          index={1}
+          label="Novidades Belloca"
+          emptyLabel="Prévia em breve..."
+          emptyDescription="Em breve, este espaço destacará mais uma peça da coleção com foto, nome e detalhes."
+        />
+      </div>
     </section>
   );
 }

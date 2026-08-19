@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { PreviewCard } from "./PreviewCard";
 import styles from "./sections.module.css";
 
 export function Hero() {
@@ -26,24 +26,13 @@ export function Hero() {
         </div>
       </div>
 
-      <figure className={styles.heroFigure}>
-        <div
-          className={styles.heroImageWrap}
-          style={{ aspectRatio: "5 / 2", background: "#fff", border: "1px solid #ddd" }}
-        >
-          <Image
-            src="/brand/belloca-logo.webp"
-            alt="Logo Belloca Handmade"
-            fill
-            priority
-            sizes="(max-width: 760px) 80vw, 32vw"
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-        <figcaption>
-          <strong>Belloca Handmade</strong>
-        </figcaption>
-      </figure>
+      <div className={styles.heroFigure}>
+        <PreviewCard
+          label="Catálogo Belloca"
+          emptyLabel="Prévia em breve..."
+          emptyDescription="As primeiras peças reais serão exibidas aqui assim que o catálogo começar a ser publicado."
+        />
+      </div>
     </section>
   );
 }

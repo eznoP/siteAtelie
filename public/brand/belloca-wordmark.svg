@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="180" viewBox="0 0 520 180" fill="none">
+  <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.96">
+    <path d="M68 142C55 113 55 67 70 47c9-12 24-18 42-16 23 3 39 17 39 39 0 19-13 32-29 37 19 4 38 18 38 39 0 22-20 35-47 35-18 0-33-5-45-15"/>
+    <path d="M110 44c6 39 11 78 15 117"/>
+    <path d="M130 96c17-8 37-12 56-11 19 1 29 11 29 27 0 16-12 29-29 31-20 3-39-2-55-12" opacity="0.55"/>
+    <path d="M332 124c24-3 45 2 63 14" opacity="0.45"/>
+    <circle cx="410" cy="126" r="11"/>
+  </g>
+  <text x="146" y="54" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="1">handmade</text>
+  <text x="145" y="115" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-style="italic" font-weight="500">Belloca</text>
+</svg>
