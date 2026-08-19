@@ -8,7 +8,7 @@ export const productPropertySchema = z.object({
 export const productInputSchema = z.object({
   name: z.string().trim().min(2).max(100),
   slug: z.string().trim().min(2).max(120),
-  description: z.string().trim().min(10).max(1200),
+  description: z.string().trim().max(1200),
   images: z.array(z.string().min(1)).min(1).max(8),
   category: z.string().trim().min(2).max(60),
   price: z.coerce.number().min(0),
