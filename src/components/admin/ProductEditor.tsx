@@ -141,8 +141,8 @@ export function ProductEditor({
               <input name="stock" type="number" min="0" step="1" defaultValue={product?.stock ?? 1} required />
             </label>
             <label className={styles.fullField}>
-              Descrição exibida no pop-up
-              <textarea name="description" rows={4} maxLength={1200} defaultValue={product?.description} required />
+              Descrição exibida no pop-up (opcional)
+              <textarea name="description" rows={4} maxLength={1200} defaultValue={product?.description} />
             </label>
           </div>
 
